@@ -5,16 +5,11 @@ before_install:
   - docker build -t toby1991/laravel-release:latest .
 script:
   - docker run --rm --tty -v $(pwd)/builds:/builds toby1991/laravel-release:latest
-#addons:
-#  artifacts:
-#    working_dir: builds
 deploy:
   provider: releases
-  api_key: 
-    secure: API_KEY
+  api_key:
+    secure: Ngs+tZ/94w8HDKBnwsqmx0i6iuPX99DhdB8+lLs8xWRr82OC47nI4AbIlAGZQpzvB2ycMUJI+mg0lgFOHnwCLwVJWqFGcmPuBreqZABTjYPaAUiOK7wPExsOqmVsgKgBRSPHcu7iC3TTlInQvm+5AtSjGzhkNIQmGF3yMBR7c5ufQb2lMipRRHw52Syz5TtzQC3NiA1QW1neLeM6d3lg6bDnB0q+yCpD8KHPycKRC2ALBFNRNR4CtyKGx4X2W4xqIlb7+B1xcRre7QXj15RGXOZ3emeaPbnCQ4TzUSdlsEYkEdq++XSPxAK7uNhARgHnY3scXkWBor3FXXPtq3xHEV608+6V5HiEJYUGS82PP38b5qknngFbBSE+Yohtv1L8/gaq1Qy/A4tmzDs4Ccri7CiVFN7yjZLEsKOEjc6Dn8TudWm6wAayqctJXb+QlyBHNyeArwE2tofAssQKMo37fwOCzeAHlY16/v6w3XBId+Owtf/3wotWkcj+fsoAKiC4gp31PKNH9qssO7OfN/Qzzc6WWxhbnUVHyWKS6WWTVcRm7kG3QWYpJJQOsHvJyIbshw5k56YbO4FJq0sDCGdeMpdK7v+LlE40tFN7xiMO5148Tceb48YjflMDLhnAVZYbj4A2mXS+U3OoYIyEzZkQJDwj42HHiv12/AvWzMyjRso=
   file_glob: true
-  file: "builds/*"
-  skip_cleanup: true
+  file: builds/*
   on:
-    tags: false
-    all_branches: true
+    repo: toby1991/laravel-release
