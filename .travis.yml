@@ -1,0 +1,18 @@
+services:
+  - docker
+before_install:
+  - docker pull composer/composer:latest
+  - docker build -t toby1991/laravel-release:latest .
+script:
+  - docker run --rm --tty -v $(pwd)/builds:/builds toby1991/laravel-release:latest
+#addons:
+#  artifacts:
+#    working_dir: builds
+deploy:
+  provider: releases
+  #api_key: "GITHUB OAUTH TOKEN"
+  file_glob: true,
+  file: "builds/*"
+  skip_cleanup: true
+  on:
+    tags: true

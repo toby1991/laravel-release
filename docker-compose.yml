@@ -1,0 +1,11 @@
+version: "2"
+
+services:
+  fpm:
+    image: composer/composer:latest
+    volumes:
+      - ./build.sh:/build.sh
+      - ./builds:/builds
+    working_dir: /
+    entrypoint: ["/build.sh"]
+    tty: true
