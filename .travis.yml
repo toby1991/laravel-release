@@ -10,7 +10,8 @@ script:
 #    working_dir: builds
 deploy:
   provider: releases
-  api_key: API_KEY
+  api_key: 
+    secure: API_KEY
   file_glob: true
   file: "builds/*"
   skip_cleanup: true
